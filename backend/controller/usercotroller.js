@@ -1,18 +1,18 @@
 
 const asyncHandler = require('express-async-handler')
 const bcrypt=require('bcryptjs')
-const User =require('/Users/oryema/MERN-app/backend/models/userModels.js')
+const User =require('/Users/oryema/Desktop/mernapp2/backend/models/userModels.js')
 const jwt=require('jsonwebtoken')
 const registerUser = asyncHandler(async(req,res)=>{
     const {name,email,password}=req.body
     if(!name ||!email ||!password){
-        res.status(400)
-        throw new Error('pleasea fill in all the fileds')
+        res.status(400).json({message:'Please fill all fields'})
+        
     }
     const UserExists= await User.findOne({email})
     if(UserExists){
-        res.status(400)
-        throw new Error('User already exists')
+        res.status(400).json({message:'User already exist '})
+       
     }
     const salt= await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password,salt)    
@@ -29,7 +29,7 @@ const registerUser = asyncHandler(async(req,res)=>{
               token:generateToken(user._id)
           })
       }else{
-          throw new Error('Invalid user creaadentilas')
+        res.status(401).json({message:'Invalid user credentials '})
       }  
 })
 const loginUser = asyncHandler(async(req,res)=>{
@@ -45,19 +45,19 @@ const loginUser = asyncHandler(async(req,res)=>{
         })
     }
         else{
-            res.status(401)
-            throw new Error('Invalid creadentials')
+            res.status(401).json({message:'In valid user credentials'})
+            
         }
 
       }
     
 )
 const getMe = asyncHandler(async(req,res)=>{
-     const user= {
+     const user= [{
         id:req.user._id,
         email:req.user.email,
         name:req.user.name
-     }
+     }]
     
     res.status(200).json(user)
 })
