@@ -1,7 +1,7 @@
 
 const asyncHandler = require('express-async-handler')
 const bcrypt=require('bcryptjs')
-const User =require('/Users/oryema/Desktop/mernapp2/backend/models/userModels.js')
+const User =require('./models/userModels.js')
 const jwt=require('jsonwebtoken')
 const registerUser = asyncHandler(async(req,res)=>{
     const {name,email,password}=req.body

@@ -1,7 +1,7 @@
 const jwt=require('jsonwebtoken')
 const asyncHandler=require('express-async-handler')
 
-const User=require('/Users/oryema/Desktop/mernapp2/backend/models/userModels.js')
+const User=require('../models/userModels.js')
 const protect =asyncHandler(async(req,res,next)=>{
 
     let token
