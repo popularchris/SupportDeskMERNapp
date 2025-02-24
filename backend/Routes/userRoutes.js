@@ -1,9 +1,10 @@
 const express=require('express')
 const router=express.Router()
-const {protect}=require('./middleware/authmidleware.js')
-const {registerUser,loginUser,getMe}= require('../controller/usercotroller.js')
+// midelware/authmiddlewa
+// const {protect}=require('../middleware/authMidleware.js')
+const {registerUser,loginUser,getMe}= require('../controllers/usercotroller.js')
  router.post('/',registerUser)
  router.post('/login',loginUser)
- router.get('/me',protect,getMe)
+ router.get('/me',getMe)
 
  module.exports=router
