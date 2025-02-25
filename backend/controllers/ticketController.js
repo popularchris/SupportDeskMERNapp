@@ -1,7 +1,7 @@
 
 const asyncHandler = require('express-async-handler')
 const User=require('../models/ticketModel')
-const Tickets=require('../models/userModel')
+const Tickets=require('../models/userModels')
 
 const getTicket = asyncHandler(async(req,res)=>{
     res.status(200).json({message:'get ticket'})
