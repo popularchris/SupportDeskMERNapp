@@ -1,7 +1,8 @@
 const express=require('express')
 const router=express.Router()
-const {getTickets,createTicket}=require('../controllers/ticketController')
-const { protect } = require('../middleware/authMidleware')
+const {protect}=require('../middleware/authMidleware.js')
+const {createTicket,getTicket}= require('../controllers/ticketController.js')
+ router.route('/').get(protect,getTicket).post(protect,createTicket)
+ 
 
-
-module.exports=router
+ module.exports=router
