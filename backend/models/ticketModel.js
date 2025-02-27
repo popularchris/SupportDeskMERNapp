@@ -13,7 +13,7 @@ const ticketSchema=mongoose.Schema({
     },
     description:{
         type:String,
-        required:[true,'Please add password']
+        required:[true,'Please add a description']
     },
     status:{
         type:String,
