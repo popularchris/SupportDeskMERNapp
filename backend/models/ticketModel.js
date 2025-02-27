@@ -9,7 +9,7 @@ const ticketSchema=mongoose.Schema({
      product:{
         type:String,
         required:[true,'Please add a product'],
-        enum:['Iphone','ipad','imac','Macbook']
+        enum:['Iphone','ipad','imac','Macbook','ipod']
     },
     description:{
         type:String,
