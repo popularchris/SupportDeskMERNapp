@@ -68,7 +68,7 @@ const User=require('../models/userModels')
         res.status(401)
         throw new Error('Not authorized')
     }
-    await ticket.remove()
+    await ticket.deleteOne()
     res.status(201).json({message:'successfully deleted'})
     
   })
@@ -88,7 +88,7 @@ const User=require('../models/userModels')
         res.status(401)
         throw new Error('Not authorized')
     }
-    const updateTicket= await Ticket.findByIdAndUpdate(req.params,req.body,{
+    const updateTicket= await Ticket.findByIdAndUpdate(req.params.id,req.body,{
         new:true
     })
     res.status(200).json(updateTicket)
